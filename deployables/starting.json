@@ -23,7 +23,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [ "sudo yum update" ]
+      "inline": [ "sudo yum update -y" ]
     }
   ]
 }
