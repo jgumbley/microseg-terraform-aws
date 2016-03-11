@@ -7,7 +7,7 @@ packer_linux_64_zip=https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_lin
 
 .PHONY: pack
 pack:
-	${SNAP_CACHE_DIR}/packer build -var-file $(terr_secret_vars_file) starting.json
+	${SNAP_CACHE_DIR}/packer/packer build -var-file $(terr_secret_vars_file) starting.json
 	$(call green,"[All steps successful]")
 
 .PHONY: install_snap
