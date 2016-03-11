@@ -22,12 +22,32 @@ resource "aws_security_group" "web" {
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = ["${var.vpc_cidr}"]
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        from_port = -1
+        to_port = -1
+        protocol = "icmp"
+        cidr_blocks = ["0.0.0.0/0"]
     }
 }
 
 resource "aws_internet_gateway" "default" {
     vpc_id = "${aws_vpc.flat_segment.id}"
+}
+
+resource "aws_route_table" "flat_route" {
+    vpc_id = "${aws_vpc.flat_segment.id}"
+
+    route {
+        cidr_block = "0.0.0.0/0"
+        gateway_id = "${aws_internet_gateway.default.id}"
+    }
+}
+
+resource "aws_route_table_association" "flat_route_assoc" {
+    subnet_id = "${aws_subnet.flat_subnet.id}"
+    route_table_id = "${aws_route_table.flat_route.id}"
 }
 
 resource "aws_subnet" "flat_subnet" {
@@ -48,6 +68,7 @@ resource "aws_instance" "web-1" {
     ami = "${lookup(var.deployables, var.aws_region)}"
     availability_zone = "${var.aws_az}"
     instance_type = "t2.small"
+    key_name = "jim"
     security_groups = ["${aws_security_group.web.id}"]
     subnet_id = "${aws_subnet.flat_subnet.id}"
     associate_public_ip_address = true
