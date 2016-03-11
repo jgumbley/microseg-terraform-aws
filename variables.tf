@@ -16,7 +16,7 @@ variable "aws_az" {
 
 variable "deployables" {
     default = {
-        us-east-1 = "ami-65c4080e"
+        us-east-1 = "ami-6540470f"
     }
 }
 

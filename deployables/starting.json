@@ -8,7 +8,7 @@
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
-    "source_ami": "ami-65c4080e",
+    "source_ami": "ami-6d1c2007",
     "ami_virtualization_type": "hvm",
     "instance_type": "t2.small",
     "ssh_username": "root",
