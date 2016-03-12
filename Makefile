@@ -3,10 +3,11 @@ define green
 endef
 
 terr_secret_vars_file=secretvars.tfvars
+ami_ver_file=amivers.tfvars
 
 .PHONY: terraform
 terraform:
-	terraform apply -var-file $(terr_secret_vars_file)
+	terraform apply -var-file $(terr_secret_vars_file) -var-file $(ami_ver_file)  
 	$(call green,"[All steps successful]")
 
 .PHONY: plan 

@@ -1,3 +1,4 @@
 *.tfstate.*
 *.tfstate
 secretvars.*
+amivers.tfvars
