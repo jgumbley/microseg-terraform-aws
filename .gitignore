@@ -2,3 +2,5 @@
 *.tfstate
 secretvars.*
 amivers.tfvars
+*.out
+*.box
