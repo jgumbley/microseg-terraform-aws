@@ -15,8 +15,8 @@
     "instance_type": "t2.small",
     "ssh_username": "centos",
     "ami_name": "packer-example {{timestamp}}",
-    "vpc_id": "vpc-ac6353c8",
-    "subnet_id": "subnet-1247f64a",
+    "vpc_id": "vpc-d0bf83b4",
+    "subnet_id": "subnet-39c2b004",
     "associate_public_ip_address": true
   }],
 

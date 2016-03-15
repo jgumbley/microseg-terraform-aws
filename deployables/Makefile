@@ -11,8 +11,8 @@ amivers_file=../amivers.tfvars
 
 .PHONY: pack
 pack:
-	PATH=${SNAP_CACHE_DIR}/packer/:${PATH}; packer build -var-file $(terr_secret_vars_file) $(packer_file) | tee $(packer_out) 
-	echo "ami_ver = \"`tail -2 $(packer_out) | head -2 | awk 'match($$0, /ami-.*/) { print substr($$0, RSTART, RLENGTH) }'`\"" > $(amivers_file)
+	set -o pipefail;PATH=${SNAP_CACHE_DIR}/packer/:${PATH}; packer build -var-file $(terr_secret_vars_file) $(packer_file) | tee $(packer_out) 
+	echo "deployables.us-east-1 = \"`tail -2 $(packer_out) | head -2 | awk 'match($$0, /ami-.*/) { print substr($$0, RSTART, RLENGTH) }'`\"" > $(amivers_file)
 	$(call green,"[All steps successful]")
 
 .PHONY: install_snap
