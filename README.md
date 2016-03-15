@@ -17,4 +17,7 @@ microseg-terrform-aws
 Acknowledge:
 -https://github.com/nickcharlton/terraform-aws-vpc
 
+brew cask install vagrant
+brew cask install virtualbox
 
+a nearly identical base machine as a starting point both locally and on AWS
